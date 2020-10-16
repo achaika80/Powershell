@@ -1,0 +1,1 @@
+This script takes cvs file with server names (should be just one column “Name”) enumerates shares on these servers and removes “Everyone” group replacing it with “Authenticated Users” groups. Could preserve existing permissions or just replace. If you want to preserve existing permissions (all but “Everyone”) use -PreserveCurrentPermissions parameter.  
