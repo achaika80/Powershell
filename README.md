@@ -1,2 +1,3 @@
 # Powershell
-PowerShell Scripts
+PowerShell Scripts of different kinds.
+
