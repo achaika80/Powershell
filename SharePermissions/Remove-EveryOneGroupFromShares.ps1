@@ -1,5 +1,46 @@
-﻿[cmdletbinding()]
-    Param($csvfile, 
+﻿<#
+.SYNOPSIS
+    .
+.DESCRIPTION
+    Connects remotely to the computers provided in the csv file enumerates shares and replaces "Everyone" group in the every share
+    permissions to "Authenticated users" group. Script doesn't change NTFS permissions, only SMB ones.
+    When script is completed report file with the status of attemted changes is produced. Report is saved to the script folder with
+    "report.txt" name.
+.PARAMETER csvfile
+    This is the name of the csv file which consists the names of the computers to process. File has to have only one column which
+    has to be titled "Name"
+    Can be provided as path: "c:\temp\csvfile.csv" or name "csvfile.csv". If provided as just a name, file has to be present in the same 
+    folder the script is being ran from.
+    File format:
+    Name
+    server01
+    server02
+    serverXX
+.PARAMETER PreserveCurrentPermissions
+    When set preserves current shared folder permissions if there are any besides "Everyone" group. By default permissions 
+    are not preserved, so after script ran succesfully only group which has SMB permissions to all non system shared folders 
+    is going to be "Authenticated Users" and permissions level is "full". 
+    
+.EXAMPLE
+    PS .\Remove-EveryOneGroupFromShares.ps1 -csvfile "C:\Temp\shares.csv" -PreserveCurrentPermissions
+    Sets new permissions for all computers provided in "C:\Temp\shares.csv" preserving current SMB permissions.
+.EXAMPLE
+    PS .\Remove-EveryOneGroupFromShares.ps1 -csvfile "shares.csv"
+    Sets new permissions for all computers provided in "shares.csv" which is located in the same folder 
+    script ran from, replacing current SMB permissions.
+
+.NOTES
+    Author: Alex Chaika
+    Date:   Oct 19, 2020 
+    
+.LINK
+    https://github.com/achaika80/Powershell/tree/master/SharePermissions
+   
+#>
+
+
+[cmdletbinding()]
+    Param([Parameter(Mandatory=$true)]$csvfile, 
     [switch]$PreserveCurrentPermissions)
 
 $PathToFiles = Split-Path -Parent $PSCommandPath
