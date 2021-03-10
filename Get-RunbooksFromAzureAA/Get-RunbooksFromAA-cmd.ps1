@@ -37,7 +37,7 @@
     Date:   Mar 10, 2021 
     
 .LINK
-    https://github.com/achaika80/Powershell/tree/master/SharePermissions
+    https://github.com/achaika80/Powershell/tree/master/Get-RunbooksFromAzureAA
    
 #>
 
