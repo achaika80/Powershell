@@ -5,6 +5,8 @@
     Created as workaround for the following issue with Export-AzAutomationRunbook cmdlet on Linux and MacOS:
     https://github.com/Azure/azure-powershell/issues/11101
 
+    It is implied that before running the script you have logged in to your azure subscription.
+
     PLEASE NOTE THE AUTOMATION ACCOUNT IS CONSIDERED THE ULTIMATE SOURCE. IF YOU HAVE SCRIPTS WITH THE SAME
     NAMES IN THE FOLDER YOU CHOOSEN TO EXPORT RUNBOOKS TO THEY WILL BE REPLACED IF RUNBOOKS MODIFIED TIME IS 
     GREATER OR EQUAL THAN THE LAST MODIFED TIME OF THE SCRIPT FILES IN THE FOLDER!!!
